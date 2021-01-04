@@ -19,6 +19,8 @@ jobs:
         run: |
          sudo apt update
          sudo mkdir newfolder
+         cd mnt
+         wget "https://ocw.mit.edu/ans15436/ZipForEndUsers/21H/21h-132-spring-2017/21h-132-spring-2017.zip"
          sudo ls
          sudo apt install apt-transport-https
          wget -O - https://repo.jellyfin.org/jellyfin_team.gpg.key | sudo apt-key add -
@@ -26,7 +28,7 @@ jobs:
          sudo apt update
          sudo apt install jellyfin
          sudo apt install nodejs
-         sudo chmod 755 -R newfolder
-         sudo chown jellyfin:jellyfin newfolder
+         sudo chmod 755 -R mnt/
+         sudo chown jellyfin:jellyfin mnt/
          npx localtunnel --port 8096
         
