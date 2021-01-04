@@ -32,7 +32,7 @@ jobs:
           ${{ secrets.GCLONE_CONFIG_SYNC }}
           EOF
           sudo apt install nodejs
-          npx localtunnel --port 8096 & npx localtunnel --port 8080 & qbittorrent-nox
+          npx localtunnel --port 8096 & npx localtunnel --port 8080 & sudo qbittorrent-nox
           
           
         
