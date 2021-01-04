@@ -33,5 +33,9 @@ jobs:
           cd new
           sudo apt install nodejs
           rclone mount MediaServer:/ /home/ --allow-non-empty --daemon --allow-other --allow-root
+          ls /home/MediaServer/
+          chown -R emby:emby /home/
+          chown emby /home/
+          chmod 777 /home/
           npx localtunnel --port 8096
         
