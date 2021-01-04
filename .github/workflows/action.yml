@@ -30,6 +30,7 @@ jobs:
           cd ../../../..
           cd home
           sudo apt install nodejs
+          sudo rclone lsd MediaServer:
           sudo rclone mount MediaServer:/ /home/runner/ --allow-non-empty --allow-other --daemon
            npx localtunnel --port 8096
          
