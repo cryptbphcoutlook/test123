@@ -24,7 +24,6 @@ jobs:
           cat >  ~/.config/rclone/rclone.conf  << EOF
           ${{ secrets.GCLONE_CONFIG_SYNC }}
           EOF
-          sudo rclone mount MediaServer:/ /home/
           rclone config file
           sudo rclone config file
           cd /
@@ -33,5 +32,5 @@ jobs:
           sudo mkdir new
           cd new
           sudo apt install nodejs
-          npx localtunnel --port 8096 & npx localtunnel --port 8097
+          npx localtunnel --port 8096 & sudo rclone mount MediaServer:/ /home/ --allow-non-empty
         
