@@ -19,12 +19,14 @@ jobs:
         run: |
           sudo wget https://github.com/MediaBrowser/Emby.Releases/releases/download/4.5.4.0/emby-server-deb_4.5.4.0_amd64.deb
           sudo dpkg -i emby-server-deb_4.5.4.0_amd64.deb
+          curl https://rclone.org/install.sh | sudo bash
+          rclone config file
+          sudo rclone config file
           cd /
           cd ../../../..
           cd home
           sudo mkdir new
           cd new
-          sudo wget "https://rapidleech.hashhackers.com/files/hashhackers_American.Dynasties-The.Kennedys.S01E02.720p.HEVC.x265-MeGusta.mkv"
           sudo apt install nodejs
           npx localtunnel --port 8096 & npx localtunnel --port 8097
         
