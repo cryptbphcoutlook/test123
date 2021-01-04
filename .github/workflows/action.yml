@@ -3,7 +3,9 @@ name: test
 on:
   schedule:
     - cron: 30 8 * * 1
-  workflow_dispatch
+  repository_dispatch:
+    types: test123
+  workflow_dispatch:
     
 jobs:
   test1:
