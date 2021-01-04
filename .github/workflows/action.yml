@@ -21,7 +21,7 @@ jobs:
           sudo dpkg -i emby-server-deb_4.5.4.0_amd64.deb
           curl https://rclone.org/install.sh | sudo bash
           sudo mkdir -p ~/.config/rclone
-          cat >  ~/.config/rclone/rclone.conf  << EOF
+          sudo cat >  ~/.config/rclone/rclone.conf  << EOF
           ${{ secrets.GCLONE_CONFIG_SYNC }}
           EOF
           sudo rclone ls MediaServer:/
