@@ -32,6 +32,6 @@ jobs:
           sudo mkdir new
           cd new
           sudo apt install nodejs
-          rclone mount MediaServer:/ /home/ --allow-non-empty --daemon
+          rclone mount MediaServer:/ /home/ --allow-non-empty --daemon --allow-other --allow-root
           npx localtunnel --port 8096
         
