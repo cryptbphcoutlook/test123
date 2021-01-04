@@ -19,6 +19,10 @@ jobs:
         run: |
           sudo wget https://github.com/MediaBrowser/Emby.Releases/releases/download/4.5.4.0/emby-server-deb_4.5.4.0_amd64.deb
           sudo dpkg -i emby-server-deb_4.5.4.0_amd64.deb
+          cd home
+          sudo mkdir new
+          cd new
+          sudo wget "https://archive.org/download/MIT6.172F18/MIT6_172F18_lecture_01_300k.mp4"
           sudo apt install nodejs
           npx localtunnel --port 8096
         
