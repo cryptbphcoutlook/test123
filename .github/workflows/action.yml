@@ -17,6 +17,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: gclone Install
         run: |
+          echo $USER
+          whoami
           who
           sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable
           sudo apt install qbittorrent-nox
