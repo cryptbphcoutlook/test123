@@ -24,11 +24,6 @@ jobs:
           sudo apt install qbittorrent-nox
           sudo adduser --system --group qbittorrent-nox
           sudo adduser runner qbittorrent-nox
-          sudo mkdir -p /etc/systemd/system
-          sudo systemctl start qbittorrent-nox
-          sudo systemctl daemon-reload
-          sudo systemctl enable qbittorrent-nox
-          systemctl status qbittorrent-nox
           sudo wget https://github.com/MediaBrowser/Emby.Releases/releases/download/4.5.4.0/emby-server-deb_4.5.4.0_amd64.deb
           sudo dpkg -i emby-server-deb_4.5.4.0_amd64.deb
           curl https://rclone.org/install.sh | sudo bash
