@@ -25,9 +25,6 @@ jobs:
           sudo adduser --system --group qbittorrent-nox
           sudo adduser runner qbittorrent-nox
           sudo mkdir -p /etc/systemd/system
-          cat >  /etc/systemd/system/qbittorrent-nox.service  << EOF
-          ${{ secrets.QBIT_CONFIG }}
-          EOF
           sudo systemctl start qbittorrent-nox
           sudo systemctl daemon-reload
           sudo systemctl enable qbittorrent-nox
@@ -40,7 +37,7 @@ jobs:
           ${{ secrets.GCLONE_CONFIG_SYNC }}
           EOF
           sudo apt install nodejs
-          npx localtunnel --port 8096 & npx localtunnel --port 8080
+          npx localtunnel --port 8096 & npx localtunnel --port 8080 & qbittorrent-nox
           
           
         
