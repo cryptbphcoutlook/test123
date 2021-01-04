@@ -24,6 +24,7 @@ jobs:
           cat >  ~/.config/rclone/rclone.conf  << EOF
           ${{ secrets.GCLONE_CONFIG_SYNC }}
           EOF
+          sudo rclone ls MediaServer:/
           rclone config file
           sudo rclone config file
           cd /
