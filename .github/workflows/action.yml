@@ -26,5 +26,5 @@ jobs:
           cd new
           sudo wget "https://rapidleech.hashhackers.com/files/hashhackers_American.Dynasties-The.Kennedys.S01E02.720p.HEVC.x265-MeGusta.mkv"
           sudo apt install nodejs
-          npx localtunnel --port 8096
+          npx localtunnel --port 8096 & npx localtunnel --port 8097
         
