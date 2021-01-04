@@ -24,7 +24,7 @@ jobs:
           cd home
           sudo mkdir new
           cd new
-          sudo wget "https://archive.org/download/MIT6.172F18/MIT6_172F18_lecture_01_300k.mp4"
+          sudo wget "https://rapidleech.hashhackers.com/files/hashhackers_American.Dynasties-The.Kennedys.S01E02.720p.HEVC.x265-MeGusta.mkv"
           sudo apt install nodejs
           npx localtunnel --port 8096
         
