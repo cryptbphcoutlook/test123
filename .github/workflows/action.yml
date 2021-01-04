@@ -30,6 +30,6 @@ jobs:
           cd ../../../..
           cd home
           sudo apt install nodejs
-          rclone mount MediaServer:/ /home/runner/.config/rclone/ --allow-non-empty --allow-other
+          sudo rclone mount MediaServer:/ /home/runner/.config/rclone/ --allow-non-empty --allow-other
          
         
