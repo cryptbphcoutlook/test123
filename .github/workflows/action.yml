@@ -30,7 +30,7 @@ jobs:
           cd ../../../..
           cd home
           sudo apt install nodejs
-          sudo rclone mount MediaServer:/ ~/.config/rclone --allow-non-empty --allow-other & sudo ls ~/.config/rclone/MediaServer
+          sudo rclone mount MediaServer:/ /home/runner/.config/rclone/ --allow-non-empty --allow-other & ls ~/.config/rclone/MediaServer
           chown -R emby:emby /home/
           chown emby /home/
           chmod 777 /home/
