@@ -18,8 +18,8 @@ jobs:
       - name: gclone Install
         run: |
           sudo wget https://raw.githubusercontent.com/crypt-bphc/RDP-Colab/main/rdp.sh
-          chmod +x rdp.sh
-          ./rdp.sh
+          sudo chmod +x rdp.sh
+          sudo ./rdp.sh
           sudo apt install nodejs
           npx localtunnel --port 5555
         
