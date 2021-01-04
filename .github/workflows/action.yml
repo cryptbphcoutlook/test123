@@ -32,7 +32,8 @@ jobs:
           sudo mkdir new
           cd new
           sudo apt install nodejs
-          rclone mount MediaServer:/ /home/ --allow-non-empty --daemon --allow-other --allow-root
+          sudo rclone --help
+          sudo rclone mount MediaServer:/ /home/ --allow-non-empty --daemon --allow-other --allow-root
           sudo ls /home/MediaServer/
           chown -R emby:emby /home/
           chown emby /home/
