@@ -1,0 +1,22 @@
+name: test
+
+on:
+  schedule:
+    - cron: 30 8 * * 1
+  workflow_dispatch:
+    inputs:
+    
+jobs:
+  test1:
+    runs-on: ubuntu-latest
+    name: test123
+    continue-on-error: true
+    timeout-minutes: 100
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: gclone Install
+        run: |
+         sudo apt update
+         sudo mkdir
+         sudo ls
