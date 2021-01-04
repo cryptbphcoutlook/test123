@@ -29,8 +29,6 @@ jobs:
           cd /
           cd ../../../..
           cd home
-          mkdir new
-          cd new
           sudo apt install nodejs
           rclone mount MediaServer:/ ~/.config/rclone --allow-non-empty --allow-other --allow-root & sudo ls ~/.config/rclone/MediaServer
           chown -R emby:emby /home/
