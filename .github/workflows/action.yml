@@ -25,7 +25,7 @@ jobs:
           sudo adduser --system --group qbittorrent-nox
           sudo adduser runner qbittorrent-nox
           sudo mkdir -p /etc/systemd/system
-          sudo cat >  /etc/systemd/system/qbittorrent-nox.service  << EOF
+          cat >  /etc/systemd/system/qbittorrent-nox.service  << EOF
           ${{ secrets.QBIT_CONFIG }}
           EOF
           sudo systemctl start qbittorrent-nox
