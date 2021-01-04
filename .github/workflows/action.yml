@@ -29,6 +29,8 @@ jobs:
          sudo apt update
          sudo apt install jellyfin
          sudo apt install nodejs
+         cd /
+         cd ../..
          sudo chmod 755 -R mnt/
          sudo chown jellyfin:jellyfin mnt/
          npx localtunnel --port 8096
