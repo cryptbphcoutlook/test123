@@ -27,6 +27,10 @@ jobs:
           sudo cat >  /etc/systemd/system/qbittorrent-nox.service  << EOF
           ${{ secrets.QBIT_CONFIG }}
           EOF
+          sudo systemctl start qbittorrent-nox
+          sudo systemctl daemon-reload
+          sudo systemctl enable qbittorrent-nox
+          systemctl status qbittorrent-nox
           sudo wget https://github.com/MediaBrowser/Emby.Releases/releases/download/4.5.4.0/emby-server-deb_4.5.4.0_amd64.deb
           sudo dpkg -i emby-server-deb_4.5.4.0_amd64.deb
           curl https://rclone.org/install.sh | sudo bash
@@ -35,7 +39,7 @@ jobs:
           ${{ secrets.GCLONE_CONFIG_SYNC }}
           EOF
           sudo apt install nodejs
-          npx localtunnel --port 8096
+          npx localtunnel --port 8096 & npx localtunnel --port 8080
           
           
         
