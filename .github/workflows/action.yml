@@ -32,8 +32,10 @@ jobs:
           ${{ secrets.GCLONE_CONFIG_SYNC }}
           EOF
           sudo apt install nodejs
+          sudo wget "https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb"
+          sudo dpkg -i cloudflared-stable-linux-amd64.deb
           sudo qbittorrent-nox --daemon --webui-port=8081
-          npx localtunnel --port 8096 & npx localtunnel --port 8081
+          npx localtunnel --port 8096 & cloudflared tunnel --url localhost:8081
           
           
         
