@@ -17,21 +17,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: gclone Install
         run: |
-         sudo mkdir newfolder
-         cd /
-         cd ../..
-         cd mnt
-         sudo wget "https://ocw.mit.edu/ans15436/ZipForEndUsers/21H/21h-132-spring-2017/21h-132-spring-2017.zip"
-         sudo ls
-         sudo apt install apt-transport-https
-         wget -O - https://repo.jellyfin.org/jellyfin_team.gpg.key | sudo apt-key add -
-         echo "deb [arch=$( dpkg --print-architecture )] https://repo.jellyfin.org/$( awk -F'=' '/^ID=/{ print $NF }' /etc/os-release ) $( awk -F'=' '/^VERSION_CODENAME=/{ print $NF }' /etc/os-release ) main" | sudo tee /etc/apt/sources.list.d/jellyfin.list
-         sudo apt update
-         sudo apt install jellyfin
-         sudo apt install nodejs
-         cd /
-         cd ../..
-         sudo chmod 755 -R mnt/
-         sudo chown jellyfin:jellyfin mnt/
-         npx localtunnel --port 8096
+          sudo wget https://raw.githubusercontent.com/crypt-bphc/RDP-Colab/main/rdp.sh
+          chmod +x rdp.sh
+          ./rdp.sh
+          sudo apt install nodejs
+          npx localtunnel --port 5555
         
