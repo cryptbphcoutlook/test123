@@ -24,7 +24,13 @@ jobs:
           sudo dpkg -i emby-server-deb_4.5.4.0_amd64.deb
           sudo apt install nodejs
           sudo qbittorrent-nox --daemon --webui-port=8081
-          npx localtunnel --port 8096 --subdomain ${{ secrets.EMBY_DOMAIN }} & npx localtunnel --port 8081 --subdomain ${{ secrets.TORRENT_DOMAIN }}
+          git clone https://github.com/cryptbphcoutlook/QBittorrentBot
+          cd QBittorrentBot
+          cat >  login.json  << EOF
+          ${{ secrets.QBIT_CONFIG }}
+          EOF
+          pip3 install -r requirements.txt
+          npx localtunnel --port 8096 --subdomain ${{ secrets.EMBY_DOMAIN }} & npx localtunnel --port 8081 --subdomain ${{ secrets.TORRENT_DOMAIN }} & python3 main.py
           
           
         
