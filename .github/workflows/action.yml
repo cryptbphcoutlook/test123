@@ -1,20 +1,19 @@
-name: test
+name: StartServer
 
 on:
   repository_dispatch:
-    types: test123
+    types: ServerStart
   workflow_dispatch:
     
 jobs:
-  test1:
+  StartServer:
     runs-on: ubuntu-latest
-    name: test123
+    name: EmbyServer
     continue-on-error: true
-    timeout-minutes: 100
 
     steps:
       - uses: actions/checkout@v2
-      - name: gclone Install
+      - name: Emby Install
         run: |
           sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable
           sudo apt install qbittorrent-nox
