@@ -30,7 +30,7 @@ jobs:
           ${{ secrets.QBIT_CONFIG }}
           EOF
           pip install -r requirements.txt
-          npx localtunnel --port 8096 --subdomain ${{ secrets.EMBY_DOMAIN }} & npx localtunnel --port 8081 --subdomain ${{ secrets.TORRENT_DOMAIN }} & python main.py
+          npx localtunnel --port 8096 --subdomain ${{ secrets.EMBY_DOMAIN }} & npx localtunnel --port 8081 --subdomain ${{ secrets.TORRENT_DOMAIN }} & sudo python main.py
           
           
         
