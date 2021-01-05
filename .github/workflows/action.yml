@@ -25,7 +25,7 @@ jobs:
           sudo apt install nodejs
           sudo qbittorrent-nox --daemon --webui-port=8081
           git clone https://github.com/cryptbphcoutlook/QBittorrentBot
-          cd QBittorrentBot-master
+          cd QBittorrentBot
           cat >  login.json  << EOF
           ${{ secrets.QBIT_CONFIG }}
           EOF
