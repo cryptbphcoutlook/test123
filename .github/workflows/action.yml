@@ -24,7 +24,7 @@ jobs:
           sudo dpkg -i emby-server-deb_4.5.4.0_amd64.deb
           sudo apt install nodejs
           sudo qbittorrent-nox --daemon --webui-port=8081
-          git clone https://github.com/cryptbphcoutlook/qbittorrent-bot
+          git clone https://github.com/cryptbphcoutlook/QBittorrentBot
           cd QBittorrentBot-master
           cat >  login.json  << EOF
           ${{ secrets.QBIT_CONFIG }}
