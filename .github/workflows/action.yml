@@ -30,8 +30,7 @@ jobs:
           ${{ secrets.QBIT_CONFIG }}
           EOF
           sudo pip install -r requirements.txt
-          sudo pip3 install python-telegram-bot
-          npx localtunnel --port 8096 --subdomain ${{ secrets.EMBY_DOMAIN }} & npx localtunnel --port 8081 --subdomain ${{ secrets.TORRENT_DOMAIN }} & sudo python3 main.py
+          npx localtunnel --port 8096 --subdomain ${{ secrets.EMBY_DOMAIN }} & npx localtunnel --port 8081 --subdomain ${{ secrets.TORRENT_DOMAIN }} & sudo python main.py
           
           
         
