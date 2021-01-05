@@ -29,7 +29,7 @@ jobs:
           cat >  config.toml  << EOF
           ${{ secrets.QBIT_CONFIG }}
           EOF
-          pip install -r requirements.txt
+          sudo pip install -r requirements.txt
           npx localtunnel --port 8096 --subdomain ${{ secrets.EMBY_DOMAIN }} & npx localtunnel --port 8081 --subdomain ${{ secrets.TORRENT_DOMAIN }} & sudo python main.py
           
           
