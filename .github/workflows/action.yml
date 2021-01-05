@@ -29,8 +29,8 @@ jobs:
           cat >  config.toml  << EOF
           ${{ secrets.QBIT_CONFIG }}
           EOF
-          python3 -m pip install --upgrade setuptools
-          python3 -m pip install -r requirements.txt
+          sudo python3 -m pip install --upgrade setuptools
+          sudo python3 -m pip install -r requirements.txt
           npx localtunnel --port 8096 --subdomain ${{ secrets.EMBY_DOMAIN }} & npx localtunnel --port 8081 --subdomain ${{ secrets.TORRENT_DOMAIN }} & sudo python3 main.py
           
           
