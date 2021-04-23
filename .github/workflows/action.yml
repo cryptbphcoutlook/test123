@@ -20,9 +20,7 @@ jobs:
           wget https://github.com/cryptbphcoutlook/test123/raw/main/cloudflare/config.tar
           tar -xvf config.tar
           cd ..
-          mkdir cloudflare
           cd cloudflare
-          sudo wget -q https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb
           sudo dpkg -i cloudflared-stable-linux-amd64.deb
           sudo apt install apt-transport-https
           wget -O - https://repo.jellyfin.org/jellyfin_team.gpg.key | sudo apt-key add -
@@ -37,6 +35,7 @@ jobs:
           sudo systemctl start jellyfin
           timeout 5m cloudflared tunnel --url localhost:8096
           sudo systemctl stop jellyfin
+          cd cloudflare
           sudo tar -cvf config.tar /var/lib/jellyfin
           git config --global user.name 'cryptbphcoutlook'
           git config --global user.email 'cryptbphcoutlook@users.noreply.github.com'
