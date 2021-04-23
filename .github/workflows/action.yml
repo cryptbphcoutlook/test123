@@ -27,4 +27,8 @@ jobs:
           sudo apt install jellyfin
           sudo systemctl stop jellyfin
           sudo tar -cvf config.tar /var/lib/jellyfin
+      - uses: actions/upload-artifact@v2
+        with:
+          name: config
+          path: cloudflare/config.tar
         
