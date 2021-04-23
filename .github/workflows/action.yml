@@ -24,6 +24,8 @@ jobs:
           echo "deb [arch=$( dpkg --print-architecture )] https://repo.jellyfin.org/$( awk -F'=' '/^ID=/{ print $NF }' /etc/os-release ) $( awk -F'=' '/^VERSION_CODENAME=/{ print $NF }' /etc/os-release ) main" | sudo tee /etc/apt/sources.list.d/jellyfin.list
           sudo apt update
           sudo apt install jellyfin
-          sudo systemctl start jellyfin
-          cloudflared tunnel --url localhost:8096
+          sudo systemctl stop jellyfin
+          sudo tar -cvf config.tar /var/lib/jellyfin
+          sudo python3 -m http.server 8000
+          cloudflared tunnel --url localhost:8000
         
