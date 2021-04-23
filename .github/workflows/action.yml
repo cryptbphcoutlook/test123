@@ -32,7 +32,7 @@ jobs:
           cd ..
           cd config/var/lib/
           sudo cp -r jellyfin/ /var/lib/
-          sudo chown -R jellyfin:jellyfin /var/lib/jellyfin
+          sudo chown -R jellyfin /var/lib/jellyfin
           sudo systemctl restart jellyfin
           echo "Jellyfin Restarted"
           timeout 4m cloudflared --url localhost:8096 || ( [[ $? -eq 124 ]] && \echo "WARNING: Timeout reached for emby, but that's OK" )
