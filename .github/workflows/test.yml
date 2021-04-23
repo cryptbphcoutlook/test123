@@ -11,7 +11,6 @@ jobs:
         run: |
           git config --global user.name 'cryptbphcoutlook'
           git config --global user.email 'cryptbphcoutlook@users.noreply.github.com'
-          ls
           git add .
           git commit -am "Automated report"
           git push
