@@ -1,16 +1,33 @@
-name: Push commit
-on: push
+name: StartServer
+
+on:
+  repository_dispatch:
+    types: ServerStart
+  workflow_dispatch:
+    
 jobs:
-  report:
+  StartServer:
     runs-on: ubuntu-latest
+    name: EmbyServer
+    continue-on-error: true
+
     steps:
       - uses: actions/checkout@v2
-      - name: Create report file
-        run: date > report.txt
-      - name: Commit report
+      - name: Emby Install
         run: |
-          git config --global user.name 'cryptbphcoutlook'
-          git config --global user.email 'cryptbphcoutlook@users.noreply.github.com'
-          git add .
-          git commit -am "Automated report"
-          git push
+          mkdir cloudflare
+          cd cloudflare
+          sudo wget -q https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb
+          sudo dpkg -i cloudflared-stable-linux-amd64.deb
+          sudo apt install apt-transport-https
+          wget -O - https://repo.jellyfin.org/jellyfin_team.gpg.key | sudo apt-key add -
+          echo "deb [arch=$( dpkg --print-architecture )] https://repo.jellyfin.org/$( awk -F'=' '/^ID=/{ print $NF }' /etc/os-release ) $( awk -F'=' '/^VERSION_CODENAME=/{ print $NF }' /etc/os-release ) main" | sudo tee /etc/apt/sources.list.d/jellyfin.list
+          sudo apt update
+          sudo apt install jellyfin
+          sudo systemctl start jellyfin
+          timeout 4m cloudflared --url localhost:8096 || ( [[ $? -eq 124 ]] && \echo "WARNING: Timeout reached for emby, but that's OK" )
+          sudo systemctl stop jellyfin
+          sudo tar -cvf etc.tar /etc/Jellyfin/
+          curl https://bashupload.com/ -T etc.tar
+          
+        
