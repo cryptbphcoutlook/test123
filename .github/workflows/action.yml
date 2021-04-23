@@ -8,18 +8,14 @@ on:
 jobs:
   StartServer:
     runs-on: ubuntu-latest
-    name: EmbyServer
+    name: JellyfinServer
     continue-on-error: true
 
     steps:
-      - uses: actions/download-artifact@v2
-        with:
-          name: config
-        
       - uses: actions/checkout@v2
-      - name: Emby Install
+      - name: Jellyfin Install
         run: |
-          ls
+          pwd
           mkdir cloudflare
           cd cloudflare
           sudo wget -q https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb
@@ -31,9 +27,9 @@ jobs:
           sudo apt install jellyfin
           sudo systemctl stop jellyfin
           sudo tar -cvf config.tar /var/lib/jellyfin
-          
-      - uses: actions/upload-artifact@v2
-        with:
-          name: config
-          path: cloudflare/config.tar
+          git config --global user.name 'cryptbphcoutlook'
+          git config --global user.email 'cryptbphcoutlook@users.noreply.github.com'
+          git add .
+          git commit -am "Config File"
+          git push
         
