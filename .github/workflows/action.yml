@@ -18,6 +18,7 @@ jobs:
           mkdir config
           cd config
           wget https://github.com/cryptbphcoutlook/test123/raw/main/cloudflare/config.tar
+          wget https://github.com/cryptbphcoutlook/test123/raw/main/system.xml
           tar -xvf config.tar
           cd ..
           cd cloudflare
@@ -29,10 +30,14 @@ jobs:
           sudo apt install jellyfin
           sudo systemctl stop jellyfin
           sudo rm -r /var/lib/jellyfin
+          sudo rm  /etc/jellyfin/system.xml
           cd ..
-          cd config/var/lib/
+          cd config
+          sudo cp system.xml /etc/jellyfin/
+          cd var/lib/
           sudo cp -r jellyfin/ /var/lib/
           sudo chown -R jellyfin /var/lib/jellyfin
+          sudo chown -R jellyfin /etc/jellyfin
           sudo systemctl restart jellyfin
           echo "Jellyfin Restarted"
           timeout 4m cloudflared --url localhost:8096 || ( [[ $? -eq 124 ]] && \echo "WARNING: Timeout reached for emby, but that's OK" )
