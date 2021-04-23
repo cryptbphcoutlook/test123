@@ -15,8 +15,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Emby Install
         run: |
-          mkdir cloudflare
-          cd cloudflare
+          mkdir cloudflare1
+          cd cloudflare1
           sudo wget -q https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb
           sudo dpkg -i cloudflared-stable-linux-amd64.deb
           sudo apt install apt-transport-https
