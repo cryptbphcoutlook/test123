@@ -15,6 +15,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Emby Install
         run: |
+          pwd
           mkdir cloudflare
           cd cloudflare
           sudo wget -q https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb
@@ -26,5 +27,4 @@ jobs:
           sudo apt install jellyfin
           sudo systemctl stop jellyfin
           sudo tar -cvf config.tar /var/lib/jellyfin
-          sudo python3 -m http.server 8000 & cloudflared tunnel --url localhost:8000
         
