@@ -36,6 +36,7 @@ jobs:
           sudo systemctl start jellyfin
           timeout 4m cloudflared --url localhost:8096 || ( [[ $? -eq 124 ]] && \echo "WARNING: Timeout reached for emby, but that's OK" )
           sudo systemctl stop jellyfin
+          cd ../../..
           cd cloudflare
           sudo tar -cvf config.tar /var/lib/jellyfin
           git config --global user.name 'cryptbphcoutlook'
