@@ -32,7 +32,7 @@ jobs:
           cd ..
           cd config/var/lib/
           sudo cp -r jellyfin/ /var/lib/
-          sudo chmod 777 /var/lib/jellyfin
+          sudo chown -R jellyfin:jellyfin /var/lib/jellyfin
           sudo systemctl start jellyfin
           timeout 5m cloudflared tunnel --url localhost:8096
           sudo systemctl stop jellyfin
