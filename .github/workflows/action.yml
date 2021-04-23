@@ -15,7 +15,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Jellyfin Install
         run: |
-          pwd
+          mkdir config
+          cd config
+          wget https://github.com/cryptbphcoutlook/test123/raw/main/cloudflare/config.tar
+          tar -xvf config.tar
+          cd ..
           mkdir cloudflare
           cd cloudflare
           sudo wget -q https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb
@@ -25,6 +29,13 @@ jobs:
           echo "deb [arch=$( dpkg --print-architecture )] https://repo.jellyfin.org/$( awk -F'=' '/^ID=/{ print $NF }' /etc/os-release ) $( awk -F'=' '/^VERSION_CODENAME=/{ print $NF }' /etc/os-release ) main" | sudo tee /etc/apt/sources.list.d/jellyfin.list
           sudo apt update
           sudo apt install jellyfin
+          sudo systemctl stop jellyfin
+          sudo rm -r /var/lib/jellyfin
+          cd ..
+          cd config/var/lib/
+          sudo cp -r jellyfin/ /var/lib/
+          sudo systemctl start jellyfin
+          timeout 5m cloudflared tunnel --url localhost:8096
           sudo systemctl stop jellyfin
           sudo tar -cvf config.tar /var/lib/jellyfin
           git config --global user.name 'cryptbphcoutlook'
